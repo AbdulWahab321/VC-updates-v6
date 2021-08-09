@@ -79,7 +79,7 @@ def createUpdater():
         code = requests.get(str(rawURL))
         codeNew = code.text.strip().replace("\n","")
         if refUpdate == True:
-            if codeNew.strip() not in open(f"{os.getcwd()}/mainProgramWindows.py").read():
+            if codeNew.strip() != open(f"{os.getcwd()}/mainProgramWindows.py").read():
                 cprint("Updates are available Installing updates.....", "cyan")
                 if os.path.exists("c:/Program Files/Virus-Creator-Py/components"):
                     downloadAndSaveZip(urlRef,os.getcwd())
