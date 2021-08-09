@@ -58,7 +58,7 @@ def downloadAndSaveZip(url, destination):
         fileCode = open(f"{destination}/{repoName}-main/mainProgramWindows.py").read()
         existingCode = open("./mainProgramWindows.py").read()
         if fileCode != existingCode:
-            runps(f'cd {destination}/{repoName}-main -AND move "mainProgramWindows.py" "{os.getcwd()}" -Force')
+            runps(f'move "mainProgramWindows.py" "{destination}/{repoName}-main/{os.getcwd()}" -Force')
         else:
             cprint("You are up to date!!", "cyan")
 
@@ -82,7 +82,7 @@ def createUpdater():
             if codeNew.strip() not in open(f"{os.getcwd()}/mainProgramWindows.py").read():
                 cprint("Updates are available Installing updates.....", "cyan")
                 if os.path.exists("c:/Program Files/Virus-Creator-Py/components"):
-                    downloadAndSaveZip()
+                    downloadAndSaveZip(urlRef,os.getcwd())
                 else:
                     print("Seems you didn't install Virus-Creator in your computer...")
                     print("please type r-cvc to install it if you deleted the folders")
